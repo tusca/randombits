@@ -23,3 +23,15 @@ Categories=Development;IDE;
 Terminal=false
 StartupWMClass=jetbrains-idea
 ```
+
+## Nemo
+
+Source: https://itsfoss.com/install-nemo-file-manager-ubuntu/
+
+```
+sudo apt install nemo
+xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+sudo apt-get install dconf-tools
+gsettings set org.gnome.desktop.background show-desktop-icons false
+xdg-open $HOME
+```
