@@ -21,4 +21,10 @@ function sshi() {
 }
 ```
 
+## print instances
 
+```
+aws ec2 describe-instances --query "Reservations[].Instances[].{id: InstanceId, image:ImageId,type:Tags[?Key=='Type'][]|[0].Value,name:Tags[?Key=='Name'].Value[]|[0], nid:NetworkInterfaces[].PrivateIpAddresses[].[{private:PrivateIpAddress, public:Association.PublicIp}][]}"   --output text | sed '$!N;s/\nNID//;P;D'
+```
+
+also use awless tool ?
