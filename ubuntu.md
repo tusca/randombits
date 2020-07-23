@@ -65,3 +65,14 @@ fi
 ```
 
 then associate with keyboard shortcut
+
+## DNS
+
+https://linuxhint.com/flush_dns_cache_ubuntu/
+
+
+```
+sudo systemd-resolve --flush-caches
+sudo systemctl restart systemd-resolved
+sudo systemd-resolve --statistics
+```
