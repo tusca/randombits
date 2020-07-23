@@ -35,3 +35,33 @@ sudo apt-get install dconf-tools
 gsettings set org.gnome.desktop.background show-desktop-icons false
 xdg-open $HOME
 ```
+
+## APT
+
+```
+sudo apt autoclean
+sudo apt clean
+sudo apt autoremove --purge
+```
+
+## Window Control
+
+Requires `sudo apt-get install wmctrl`
+
+then
+
+bringToFront bash script is
+
+```
+#!/bin/bash
+# $1 : command to launch
+# $2 : part of the window title (unique enough)
+if [ `wmctrl -l | grep -c "$2"` != 0 ] 
+then
+    wmctrl -a "$2"
+else
+    $1 &
+fi
+```
+
+then associate with keyboard shortcut
