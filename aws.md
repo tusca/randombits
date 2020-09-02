@@ -28,3 +28,38 @@ aws ec2 describe-instances --query "Reservations[].Instances[].{id: InstanceId, 
 ```
 
 also use awless tool ?
+
+## Boto 3 pagination
+
+```
+import boto3
+def aws_fetch(fn, args={}, name=None) -> Iterator:
+    while args.get('NextToken', None) != '':
+        result = fn(**args)
+        args['NextToken'] = result.get('NextToken', '')
+        try:
+            items = result[name] if name is not None else result
+        except KeyError as err:
+            logger.error(f'Failed to find value for key {name} where keys are {result.keys()}')
+            raise
+        for item in items:
+            yield item
+
+def flatten_describe_instances(reservations):
+    return [instance for reservation in reservations for instance in reservation['Instances']]
+
+reservations = aws_fetch(boto3.client('ec2').describe_instances, name='Reservations')
+instances = flatten_describe_instances(reservations)
+
+
+from io import BytesIO
+from json import loads
+import boto3
+def read_json_tar_gz_from_s3(s3path):
+   bucket, path = s3path.split('/', 1)
+   with BytesIO() as fh:
+      boto3.client('s3').download_fileobj(bucket, path, fh)
+      return loads(decompress(fh.getbuffer()))
+      
+
+```
