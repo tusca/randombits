@@ -52,6 +52,13 @@ reservations = aws_fetch(boto3.client('ec2').describe_instances, name='Reservati
 instances = flatten_describe_instances(reservations)
 
 
+```
+
+## Boto3 read x.json.tar.gz from s3
+
+```
+
+
 from io import BytesIO
 from json import loads
 import boto3
@@ -61,5 +68,4 @@ def read_json_tar_gz_from_s3(s3path):
       boto3.client('s3').download_fileobj(bucket, path, fh)
       return loads(decompress(fh.getbuffer()))
       
-
 ```
