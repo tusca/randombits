@@ -27,6 +27,87 @@ apt install python3-pip
 pip3 completion --bash >> ~/.bashrc
 ```
 
+
+## pyenv
+
+```
+# Install
+curl https://pyenv.run | bash
+
+# List available versions
+pyenv install --list
+
+# List installed versions
+pyenv versions
+
+# List created virtual environents
+pyenv virtualenvs
+
+# Install version
+pyenv install 3.9.0b5
+
+# Create a virtual environmet named pm39 usign python 3.9.0b5
+pyenv virtualenv 3.9.0b5 pm39
+
+# Activate pm39 venv
+pyenv activate pm39 
+
+# Deactivate/Leave it
+pyenv deactivate
+ 
+# Uninstall version
+pyenv uninstall 3.9.0b5
+```
+
+typically will ask to add to .bashrc
+```
+export PATH="/home/guy/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+```
+
+in case of dependency issues, google it and/or see
+```
+19814  python -m pip install readline
+19815  sudo python -m pip install readline
+19816  sudo python3 -m pip install readline
+19817  pyenv install python3.7.8
+19818  pyenv install python-3.7.8
+19819  pyenv install 3.7.8
+19820  sudo apt-get remove libssl-dev
+19821  sudo apt-get update
+19822  sudo apt-get install libssl1.0-dev
+19823  apt search bz2 python
+19824  apt install python3-bz2file python-bz2file
+19825  sudo apt install python3-bz2file python-bz2file
+19826  apt search readline python
+20444  apt search libffi-dev
+20445  apt install libffi-dev
+20446  sudo apt install libffi-dev
+```
+
+## Unbuffered
+source: https://stackoverflow.com/questions/107705/disable-output-buffering
+
+```
+import sys
+class Unbuffered(object):
+    def __init__(self, stream):
+        self.stream = stream
+
+    def write(self, data):
+        self.stream.write(data)
+        self.stream.flush()
+
+    def writelines(self, datas):
+        self.stream.writelines(datas)
+        self.stream.flush()
+
+    def __getattr__(self, attr):
+        return getattr(self.stream, attr)
+```
+
+
 ## venv
 
 ```
