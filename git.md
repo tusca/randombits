@@ -15,6 +15,13 @@ git config --global credential.helper store
 git config --global credential.helper 'cache --timeout 9999999'
 ```
 
+## Origin
+
+```
+git remote set-url origin URL
+git remote -v
+```
+
 ## Not recommended
 
 ```
