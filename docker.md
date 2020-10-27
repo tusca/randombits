@@ -21,6 +21,14 @@ docker run --rmi -ti NAME_OR_ID /bin/bash
 docker run --name mysql -p3306:3306 -e MYSQL_ROOT_PASSWORD=dev -v ~/mysql/mydb:/var/lib/mysql -d mysql:5.7
 ```
 
+this might require some ipv6 sh*t
+
+```
+sudo sysctl -w net.ipv6.conf.all.forwarding=1
+```
+
+
+
 ## Delete all
 
 ```
