@@ -29,3 +29,10 @@ mysql -p -u[user] -h [host] [database] < db_backup.dump
 ```
 select * from information_schema.processlist
 ```
+
+## IP Issues with docker
+
+```
+sudo sysctl -w net.ipv6.conf.all.forwarding=1
+```
+
