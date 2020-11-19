@@ -15,6 +15,13 @@ docker run --rmi -ti NAME_OR_ID /bin/bash
 ```
 (`--rm` being to delete the container after being created from the image)
 
+
+## Docker stats on usage
+
+```
+docker stats <container>
+```
+
 ## Mysql, also see mysql.md
 
 ```
