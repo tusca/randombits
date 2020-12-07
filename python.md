@@ -200,6 +200,79 @@ for (colA, colB) in cursor:
 cursor.close()
 ```
 
+### show process list using open with
+
+```
+#!/usr/bin/env python3
+import mysql.connector
+from json import loads
+from pathlib import Path
+from collections import namedtuple
+  
+ 
+ 
+ 
+ 
+class connect:
+    def __init__(self, user, pwd, host, port, schema):
+        self.parameters = (user, pwd, host, port, schema)
+ 
+    def __enter__(self):
+        (user, pwd, host, port, schema) = self.parameters
+        self.connection = mysql.connector.connect(
+            user=user, password=pwd,
+            host=host, port=int(port),
+            database=schema
+        )
+        return self.connection
+ 
+    def __exit__(self, type, value, traceback):
+        self.connection.close()
+ 
+ 
+# Create query cursor which is closed after
+class execute_query:
+    def __init__(self, connection, query, parameters=tuple()):
+        self.connection = connection
+        self.query = query
+        self.parameters = parameters
+ 
+    def __enter__(self):
+        self.cursor = self.connection.cursor()
+        q = ( self.query )
+        self.cursor.execute(q, self.parameters)
+        return self.cursor
+ 
+    def __exit__(self, type, value, traceback):
+        self.cursor.close()
+ 
+def loadconfig():
+    converter = lambda d: namedtuple('Config', d.keys())(*d.values())
+    return loads(Path(Path.home(), '.showprocesslist.conf').read_text(encoding='utf8'), object_hook=converter)
+ 
+config = loadconfig()
+db = config.db
+ 
+query = 'show processlist;'
+with connect(db.user, db.password, db.hostname, db.port, db.schema) as connection:
+    with execute_query(connection, query) as cursor:
+        for record in cursor:
+            (id, user, host, db, command, time, state, info) = record
+            if info is not None:
+                print('[%s] "%s" on db %s' % (user, info, db))
+```
+with config
+```
+{
+    "db": {
+        "user":"xxxxx",
+        "password":"****",
+        "hostname":"xxxx",
+        "port":3306,
+        "schema": "mysql"
+    }
+}
+```
 ## URLS
 
 ### urllib
@@ -257,3 +330,17 @@ json.loads(string)
 # serialize
 json.dumps(object, indent=4)
 ```
+
+# Flask
+
+## pymysql
+
+```
+mysql+pymysql://user:pwd@hostname/schema
+```
+
+-  http://flask.pocoo.org/docs/1.0/patterns/sqlalchemy/
+
+# S3
+
+http://s3fs.readthedocs.io/en/latest/api.html 
