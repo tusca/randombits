@@ -5,3 +5,4 @@ Links to interesting pages on the internet, some might be gone by the time you v
 - https://pypi.org/project/pydf/
 - https://github.com/jarun/nnn
 - https://yuml.me/diagram/scruffy/class/draw
+- https://ssl-config.mozilla.org/
