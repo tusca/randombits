@@ -1,3 +1,13 @@
+# show config
+
+```
+show configuration
+ 
+ 
+show configuration commands
+```
+
+
 # op : /opt/vyatta/bin/vyatta-op-cmd-wrapper
 ```
 /opt/vyatta/bin/vyatta-op-cmd-wrapper show vrrp
