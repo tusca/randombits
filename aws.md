@@ -1,5 +1,13 @@
 # AWS
 
+## Concurrent s3
+
+```
+
+aws configure set default.s3.max_concurrent_requests 20
+```
+will make the aws s3 cli use multiple threads to accelerate the download (and upload) of file transfers from (to) s3
+
 ## Ssh into instanceid
 
 Prerequisites: configured `aws` command, installed `ssh` as well as pem file(s) in `$PATH_TO_PEMS`
