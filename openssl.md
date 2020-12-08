@@ -11,6 +11,12 @@ used as
 readcrt file.crt.pem
 ```
 
+# End Date ... just need the end date
+
+```
+openssl x509 -enddate -noout -in client.pem
+```
+
 # Check crt from website
 
 ```
