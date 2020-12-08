@@ -25,3 +25,7 @@ fi
 create a shortcut (eg. gnome keyboard F9)
 
 - example command : `bringToFront tilix "Tilix"
+
+# More goodness
+
+https://www.linuxjournal.com/magazine/hack-and-automate-your-desktop-wmctrl
