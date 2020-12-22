@@ -1,5 +1,11 @@
 # Python Bits
 
+## print/get exceptions
+
+```
+traceback.print_exc() 
+and ... ?
+```
 
 ## System and as import
 ```
@@ -19,6 +25,8 @@ converter = lambda d: namedtuple('MyClazz', d.keys())(*d.values())
 obj = loads('{ "field" : "stuff" }', object_hook=converter)
 print(obj.field)
 ```
+
+also see https://github.com/tusca/python_config_files/blob/main/example_json_simple.py
 
 ## Bash complete
 
