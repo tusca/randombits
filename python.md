@@ -1,11 +1,29 @@
 # Python Bits
 
+## Formatting
+
+```
+from datetime import datetime
+
+a = 25
+b = 'victory'
+d = datetime.now()
+
+print(f'{a} {b} {d}')
+print('%s %s %s' % (a, b, d))
+print('%(x)s %(y)s %(z)s' % {'x': a, 'y': b, 'z': d})
+print('{x} {y} {z}'.format(x=a, y=b, z=d))
+```
+
+
 ## print/get exceptions
 
 ```
-traceback.print_exc() 
-
-exception = traceback.format_exc()
+try:
+  ...
+except:
+  traceback.print_exc() 
+  exception = traceback.format_exc()
 ```
 
 ## System and as import
