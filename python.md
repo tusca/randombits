@@ -1,5 +1,42 @@
 # Python Bits
 
+## Arguments with argparse
+
+```
+from argparse import ArgumentParser
+
+
+def main(a1, a2, p1, p2, v, i):
+    print(f'arg1 is {a1}')
+    print(f'arg2 is {a2}')
+    print(f'param1 is {p1}')
+    print(f'param2 is {p2}')
+    print(f'verbosity is {v}')
+    print(f'my tailor is {i}')
+
+
+if __name__ == "__main__":
+    p = ArgumentParser(description="I'm a super CLI tool, use me !")
+    p.add_argument('arg1', help='Arg1')  # mandatory argument
+    p.add_argument('arg2', help='Arg2')  # mandatory argument
+    p.add_argument('-p', '--param1', help='Param1') # parameter1 also mandatory, can be used as "-p SOMETHING" or "--param1 SOMETHING"
+    p.add_argument('-q', '--param2', required=False, default='Hi', help='Param2') # parameter2 is optional
+    p.add_argument('-v', '--verbose', action='store_true', help='print more') # also optional, if not given then it's False, otherwise true
+    p.add_argument('-i', type=int, help="give me a number or else") # mandatory and is a number (without type=int it's a string)
+    a = p.parse_args()
+    main(a.arg1, a.arg2, a.param1, a.param2, a.verbose, a.i)
+```
+used as
+```
+$ python argparsing.py hello world --param1 me -q 25 -v -i 36
+arg1 is hello
+arg2 is world
+param1 is me
+param2 is 25
+verbosity is True
+my tailor is 36
+```
+
 ## Formatting
 
 ```
