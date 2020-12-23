@@ -1,5 +1,14 @@
 # Docker
 
+## Docker save/load
+
+```
+docker save APP:latest | gzip > APP-latest.tar.gz
+
+docker load < APP-latest.tar.gz
+```
+
+
 ## bash into running container
 
 ```
