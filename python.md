@@ -13,6 +13,12 @@ print(f'{a} {b} {d}')
 print('%s %s %s' % (a, b, d))
 print('%(x)s %(y)s %(z)s' % {'x': a, 'y': b, 'z': d})
 print('{x} {y} {z}'.format(x=a, y=b, z=d))
+
+print(f"now is {d.strftime('%Y-%m-%d %H:%M:%S')}")
+e = datetime.strptime('2020-12-12 15:19:17', '%Y-%m-%d %H:%M:%S')
+duration = datetime.now() - e
+print(f'{e} was {duration} ago, which is approx {duration.days} days ago')
+
 ```
 
 
