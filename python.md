@@ -4,7 +4,8 @@
 
 ```
 traceback.print_exc() 
-and ... ?
+
+exception = traceback.format_exc()
 ```
 
 ## System and as import
