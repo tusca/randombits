@@ -1,5 +1,19 @@
 # Git Bits
 
+## Undo local commit
+before it's pushed
+
+```
+git reset --soft HEAD~1
+```
+will put changes back as just before the commit
+
+```
+git reset --hard HEAD~1
+```
+
+will also throw away the changes so be carefull
+
 ## Setups
 
 ```
