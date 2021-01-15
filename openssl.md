@@ -29,6 +29,10 @@ where:
 - FQN : fully qualified name
 - 443 : if needed change port
 
+# More OpenSSL Checks
+
+https://langui.sh/2009/03/14/checking-a-remote-certificate-chain-with-openssl/
+
 # Generate using available CA
 
 ```
