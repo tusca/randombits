@@ -21,6 +21,7 @@ openssl x509 -enddate -noout -in client.pem
 
 ```
 echo | openssl s_client -showcerts -servername FQN -connect FQN_OR_IP:443 2>/dev/null | openssl x509 -inform pem -noout -text
+echo | openssl s_client -showcerts -servername FQN -connect FQN_OR_IP:443 2>/dev/null | openssl x509 -inform pem -noout -enddate
 ```
 
 where:
