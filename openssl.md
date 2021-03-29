@@ -4,6 +4,7 @@
 alias readcrt="openssl x509 -inform PEM -text -in"
 alias readcsr="openssl req -text -noout -verify -in"
 alias readpk="openssl rsa -check -in"
+alias realcrl="openssl crl -inform PEM -text -noout -in"
 ```
 
 used as
