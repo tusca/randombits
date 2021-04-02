@@ -127,7 +127,12 @@ pyenv deactivate
  
 # Uninstall version
 pyenv uninstall 3.9.0b5
+
+# UPDATE !!!!! to get new versions
+pyenv update
 ```
+
+
 
 typically will ask to add to .bashrc
 ```
