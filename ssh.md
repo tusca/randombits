@@ -3,7 +3,7 @@
 ## Ignorant
 
 ```
--o UserKnownHostsFile="/dev/null" -o StrictHostKeyChecking=no
+-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 ```
 
 ## Removant
