@@ -21,6 +21,8 @@ ls -l | tr -s ' ' | cut -d' ' -f 7,6 | sort | uniq -c
 #awk ?
 awk -F '===' '{ print $1}'
 
+# Combine multi column with aligned spaces and count words
+tr -s "\t" " " | cut -d' ' -f 3 | sort | uniq -c
 
 ```
 
