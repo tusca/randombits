@@ -101,8 +101,11 @@ pip3 completion --bash >> ~/.bashrc
 ## pyenv
 
 ```
-# Install
+# Install on linux
 curl https://pyenv.run | bash
+# Install on Mac
+brew install pyenv-virtualenv
+# or just brew install pyenv (not sure)
 
 # List available versions
 pyenv install --list
