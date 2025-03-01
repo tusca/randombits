@@ -12,7 +12,12 @@ func getAndBroadcastLogs(clientset *kubernetes.Clientset, podName string) {
 		req := clientset.CoreV1().Pods("default").GetLogs(podName, &podLogOpts)
 		podLogs, err := req.Stream(context.Background())
 		if err != nil {
-			hub.broadcast <- []byte(fmt.Sprintf("Error in opening stream for pod %s: %v", podName, err))
+			errorMessage := ServerResponse{
+				EventType: "error",
+				Value:     fmt.Sprintf("Error in opening stream for pod %s: %v", podName, err),
+			}
+			msgJSON, _ := json.Marshal(errorMessage)
+			hub.broadcast <- msgJSON
 			existingLogsDone <- true
 			return
 		}
@@ -32,7 +37,12 @@ func getAndBroadcastLogs(clientset *kubernetes.Clientset, podName string) {
 			hub.broadcast <- msgJSON
 		}
 		if err := scanner.Err(); err != nil {
-			hub.broadcast <- []byte(fmt.Sprintf("Error in scanner for pod %s: %v", podName, err))
+			errorMessage := ServerResponse{
+				EventType: "error",
+				Value:     fmt.Sprintf("Error in scanner for pod %s: %v", podName, err),
+			}
+			msgJSON, _ := json.Marshal(errorMessage)
+			hub.broadcast <- msgJSON
 		}
 		existingLogsDone <- true
 	}()
@@ -45,7 +55,12 @@ func getAndBroadcastLogs(clientset *kubernetes.Clientset, podName string) {
 		req := clientset.CoreV1().Pods("default").GetLogs(podName, &podLogOpts)
 		podLogs, err := req.Stream(context.Background())
 		if err != nil {
-			hub.broadcast <- []byte(fmt.Sprintf("Error in opening stream for pod %s: %v", podName, err))
+			errorMessage := ServerResponse{
+				EventType: "error",
+				Value:     fmt.Sprintf("Error in opening stream for pod %s: %v", podName, err),
+			}
+			msgJSON, _ := json.Marshal(errorMessage)
+			hub.broadcast <- msgJSON
 			return
 		}
 		defer podLogs.Close()
@@ -66,7 +81,12 @@ func getAndBroadcastLogs(clientset *kubernetes.Clientset, podName string) {
 			}
 		}
 		if err := scanner.Err(); err != nil {
-			hub.broadcast <- []byte(fmt.Sprintf("Error in scanner for pod %s: %v", podName, err))
+			errorMessage := ServerResponse{
+				EventType: "error",
+				Value:     fmt.Sprintf("Error in scanner for pod %s: %v", podName, err),
+			}
+			msgJSON, _ := json.Marshal(errorMessage)
+			hub.broadcast <- msgJSON
 		}
 	}()
 
