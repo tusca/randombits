@@ -77,3 +77,30 @@ fi
 kubectl get secret "$SECRET_NAME" -o yaml | yq '.data."'"$SECRET_KEY"'"' | base64 --decode
 
 ```
+
+## list all pods running on nodes in a specific karpenter nodepool
+
+```
+
+#!/bin/bash
+# Check if POOL parameter is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <POOL>"
+  exit 1
+fi
+
+POOL=$1
+# Get nodes with the specified nodepool label
+NODES=$(kubectl get nodes -l karpenter.sh/nodepool=$POOL -o jsonpath='{.items[*].metadata.name}')
+
+# Loop through each node
+for NODE in $NODES; do
+  echo "Node: $NODE"
+  echo "Pods:"
+  kubectl get pods --all-namespaces --field-selector spec.nodeName=$NODE -o custom-columns='NAMESPACE:.metadata.namespace,POD:.metadata.name' --no-headers
+  echo ""
+done
+
+
+
+```
