@@ -1,5 +1,12 @@
 # terraform
 
+## replace provider
+
+```
+export PROVIDER=...
+terraform state replace-provider "registry.terraform.io/-/$PROVIDER" "hashicorp/$PROVIDER"
+```
+
 ## plan targets
 
 ```
