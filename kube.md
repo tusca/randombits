@@ -34,6 +34,12 @@ kubectl drain NODENAME  --ignore-daemonsets --delete-emptydir-data --force
 kubectl drain $(kubectl get pod PODNAME -o=json | jq -r .spec.nodeName) --ignore-daemonsets --delete-local-data --force
 ```
 
+## show all http proxies
+
+```
+kubectl get httpproxy --all-namespaces -o json | jq -r '.items | sort_by(.spec.ingressClassName, .metadata.namespace, .metadata.name) [] | [.spec.ingressClassName, .metadata.namespace, .metadata.name, .spec.virtualhost.fqdn] | @tsv' | column -t
+```
+
 
 # Scripts
 
