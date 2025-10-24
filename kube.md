@@ -40,8 +40,17 @@ kubectl drain $(kubectl get pod PODNAME -o=json | jq -r .spec.nodeName) --ignore
 kubectl get httpproxy --all-namespaces -o json | jq -r '.items | sort_by(.spec.ingressClassName, .metadata.namespace, .metadata.name) [] | [.spec.ingressClassName, .metadata.namespace, .metadata.name, .spec.virtualhost.fqdn] | @tsv' | column -t
 ```
 
+## View pods with fzf preview
+
+```
+kubectl get pods -o name | cut -d/ -f2 | \
+fzf --preview 'kubectl get pod {} -o yaml | yq -P -C' \
+--preview-window=right:70%:wrap \
+--bind 'enter:execute:kubectl get pod {} -o yaml | yq -P -C | less -R'
+```
 
 # Scripts
+
 
 ## Drain Node on Which POD runs
 
