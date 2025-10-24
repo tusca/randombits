@@ -43,4 +43,15 @@ kubectl get httpproxy --all-namespaces -o json | jq -r '.items | sort_by(.spec.i
 
 # Scripts
 
-## TBD
+## Drain Node on Which POD runs
+
+```
+export POD=$1
+if [[ "$POD" == "" ]]; then
+  echo "Usage: drainnodeofpod PODID"
+  exit 0
+fi
+ 
+kubectl drain $(kubectl get pod $POD -o=json | jq -r .spec.nodeName) --ignore-daemonsets --delete-local-data $2
+
+```
