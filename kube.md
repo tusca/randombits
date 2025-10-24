@@ -55,3 +55,25 @@ fi
 kubectl drain $(kubectl get pod $POD -o=json | jq -r .spec.nodeName) --ignore-daemonsets --delete-local-data $2
 
 ```
+
+## View kubernetes secret
+
+```
+#!/bin/bash
+
+SECRET_NAME=$1
+SECRET_KEY=$2
+
+if [ -z "$SECRET_NAME" ]; then
+    kubectl get secret
+    exit 0
+fi
+
+if [ -z "$SECRET_KEY" ]; then
+    kubectl get secret "$SECRET_NAME" -o yaml | yq '.data |= with_entries(.value |= @base64d)'
+    exit 0
+fi
+
+kubectl get secret "$SECRET_NAME" -o yaml | yq '.data."'"$SECRET_KEY"'"' | base64 --decode
+
+```
