@@ -16,6 +16,9 @@ Usage alternate history:
 h -2 MATCH1 MATCH2 ...
 ```
 
+requirements:
+- brew install coreutils (and adjust path probably)
+
 script
 ```
 #!/usr/bin/env fish
