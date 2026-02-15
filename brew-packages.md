@@ -22,30 +22,44 @@ Tools for managing cloud resources, clusters, and containers.
 | **terraform** | Formula | [Link](https://github.com/hashicorp/terraform) | Infrastructure as Code tool to build, change, and version infrastructure safely and efficiently. |
 | **terragrunt** | Formula | [Link](https://github.com/gruntwork-io/terragrunt) | Thin wrapper that provides extra tools for keeping Terraform configurations DRY. |
 
-## Development & Programming
+## Development: IDEs & GUI Apps
 
-Languages, IDEs, version control, and database tools.
+Editors and integrated development environments.
 
 | Package | Type | GitHub | Description |
 | :--- | :--- | :--- | :--- |
-| **beekeeper-studio** | Cask | [Link](https://github.com/beekeeper-studio/beekeeper-studio) | Cross-platform SQL editor and database manager. |
-| **copilot-cli** | Cask | [Link](https://github.com/github/copilot-cli) | GitHub Copilot in the CLI (Legacy/beta tool). |
 | **coteditor** | Cask | [Link](https://github.com/coteditor/CotEditor) | Lightweight plain-text editor for macOS. |
+| **intellij-idea** | Cask | [Link](https://github.com/JetBrains/intellij-community) | Capable and ergonomic Java IDE. |
+| **visual-studio-code** | Cask | [Link](https://github.com/microsoft/vscode) | Code editor redefined and optimized for building and debugging modern web and cloud applications. |
+
+## Development: Terminal Tools
+
+Languages, compilers, and CLI utilities for development.
+
+| Package | Type | GitHub | Description |
+| :--- | :--- | :--- | :--- |
+| **copilot-cli** | Cask | [Link](https://github.com/github/copilot-cli) | GitHub Copilot in the CLI (Legacy/beta tool). |
 | **fnm** | Formula | [Link](https://github.com/Schniz/fnm) | Fast and simple Node.js version manager. |
 | **gh** | Formula | [Link](https://github.com/cli/cli) | GitHub's official command-line tool. |
 | **git** | Formula | [Link](https://github.com/git/git) | Distributed version control system. |
 | **go** | Formula | [Link](https://github.com/golang/go) | Open source programming language supported by Google. |
-| **intellij-idea** | Cask | [Link](https://github.com/JetBrains/intellij-community) | Capable and ergonomic Java IDE. |
 | **just** | Formula | [Link](https://github.com/casey/just) | A handy command runner (save and run project-specific commands). |
 | **llvm** | Formula | [Link](https://github.com/llvm/llvm-project) | Collection of modular and reusable compiler and toolchain technologies. |
 | **poetry** | Formula | [Link](https://github.com/python-poetry/poetry) | Python dependency management and packaging tool. |
 | **python@3.13** | Formula | [Link](https://github.com/python/cpython) | Interpreted, interactive, object-oriented programming language (v3.13). |
 | **python@3.14** | Formula | [Link](https://github.com/python/cpython) | Interpreted, interactive, object-oriented programming language (v3.14). |
 | **rust** | Formula | [Link](https://github.com/rust-lang/rust) | Systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety. |
-| **sequel-ace** | Cask | [Link](https://github.com/Sequel-Ace/Sequel-Ace) | MySQL/MariaDB database manager for macOS. |
 | **uv** | Formula | [Link](https://github.com/astral-sh/uv) | An extremely fast Python package installer and resolver. |
-| **visual-studio-code** | Cask | [Link](https://github.com/microsoft/vscode) | Code editor redefined and optimized for building and debugging modern web and cloud applications. |
 | **yq** | Formula | [Link](https://github.com/mikefarah/yq) | Portable command-line YAML processor. |
+
+## Development: Database Clients
+
+Tools for managing databases.
+
+| Package | Type | GitHub | Description |
+| :--- | :--- | :--- | :--- |
+| **beekeeper-studio** | Cask | [Link](https://github.com/beekeeper-studio/beekeeper-studio) | Cross-platform SQL editor and database manager. |
+| **sequel-ace** | Cask | [Link](https://github.com/Sequel-Ace/Sequel-Ace) | MySQL/MariaDB database manager for macOS. |
 
 ## Shell & Utilities
 
